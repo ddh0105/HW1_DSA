@@ -1,0 +1,78 @@
+Xây dung thuật toán để tạo ra mảng số BLUM nhỏ hơn số N cho trước và thực hiện các yêu cầu:
+- Tìm ra tất cả các cặp số BLUM có tổng cũng là một số blum
+- Kiểm tra số blum M có thuộc day trên: 
+
+Bài làm:
+
+1. Nhập số N
+a, Tạo hàm sàng sô nguyên tố trong khoảng N
+- Sử dung thuật toán Eratosthenes
+void sangsnt(N, bool prime[]){
+for (i = 0; i < N; i++){
+prime[i] = 1;}
+prime[0] =prime[1]=0;
+for (int i = 2; i < N; i++){
+if (prime[i] =true){for (int j = i * i; j < N; j++){prime[j] = false}}}}
+
+b, Viết hàm tạo ra mảng số Blum < N, và tính số phần tử của mảng
+arrblumNumbers(N, prime, blumnumbers[]{
+dem = 0;
+for (p = 2; p < N; p++){
+if (prime[p]= true){
+   for (int p = q; q < N; q++){
+       if (prime[q]= true){
+          int blumNumber = p * q;
+       if (blumNumber < N){
+           blumumbers[dem++]=blumNumber;
+       }
+       }
+   }
+}
+- Tạo hàm sắp xếp lại day Blum vừa tìm được ( sử dung bubble sort)
+for (i = 0; i < dem - 1; i ++){
+    for (j = 0; j < dem - i - 1; j++){
+	if (blumNumbers[j]> blumNumbers[j+1]{
+	    swap(blumNumbers[j], blumNumber[j+1]);
+        }
+    }
+return dem;
+}
+
+c, Viet ham tim ra cac cap so blum co tong la so blum co trong day
+findPairofBlum(blumNumbers[], size){
+for (i = 0; i < size; i++){
+    for(j = i; j < size; j++){
+        int sum = blumNumbers[i]+ blumNumbers[j];
+        for (int k = 0; k < size; k++){
+           if(blumNumbers[k] == sum){
+		cout cap so blum
+		breaks;
+		}
+		}
+	}
+     }
+}
+d, Ham kiem tra su ton tai cua so blum M
+bool checkBlum(blumNumbers[], size, M){
+    for (i = 0; i < size; i++){
+        if (blumNumbers[i] == M) return true;
+    }
+    return false;
+}
+e, Viet chuong trinh chinh
+- Nhap vao so N;
+- bool prime[N];
+- sangsnt(N, prime);
+
+- int blumBumbers[1000];
+- int size = arrblumNumbers(N, prime, blumNumbers);
+
+- print:Cac so blum nho hon N;
+- for (i = 0; i < size; i++){
+print blumNumbers[i];
+- findPairofBlum(blumNumbers, size);
+
+- Nhap vao so Blum M;
+- if (checkBlum(blumNumbers, size, M) == true) print: La so thuoc day
+else print: Khong thuoc day.
+
